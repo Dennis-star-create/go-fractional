@@ -1,0 +1,82 @@
+---
+import Logo from './Logo.astro';
+const year = new Date().getFullYear();
+---
+<footer class="ftr">
+  <div class="container ftr__inner">
+    <div class="ftr__brand">
+      <Logo variant="light" />
+      <p class="ftr__tag">Senior expertise, voor een deel van je week.</p>
+    </div>
+
+    <nav class="ftr__col" aria-label="Navigatie">
+      <span class="ftr__head">Navigatie</span>
+      <a href="#aanpak">Aanpak</a>
+      <a href="#expertise">Expertise</a>
+      <a href="#opdrachten">Opdrachten</a>
+      <a href="#waarom">Waarom fractional</a>
+    </nav>
+
+    <div class="ftr__col">
+      <span class="ftr__head">Contact</span>
+      <a href="mailto:info@go-fractional.nl">info@go-fractional.nl</a>
+      <a href="https://go-fractional.nl">go-fractional.nl</a>
+      <span class="ftr__muted">Utrecht &amp; heel Nederland</span>
+    </div>
+  </div>
+
+  <div class="container ftr__bottom">
+    <span>&copy; {year} Go Fractional</span>
+    <span>KvK &middot; Btw op aanvraag</span>
+  </div>
+</footer>
+
+<style>
+  .ftr {
+    background: var(--ink);
+    color: rgba(255,255,255,0.75);
+    padding: 72px 0 32px;
+  }
+  .ftr__inner {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+  .ftr__tag {
+    margin-top: 18px;
+    font-size: 15px;
+    max-width: 320px;
+    color: rgba(255,255,255,0.6);
+  }
+  .ftr__col { display: flex; flex-direction: column; gap: 12px; }
+  .ftr__head {
+    font-family: var(--font-head);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .ftr__col a { font-size: 15px; transition: color .18s var(--ease); }
+  .ftr__col a:hover { color: #fff; }
+  .ftr__muted { font-size: 15px; color: rgba(255,255,255,0.5); }
+  .ftr__bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 28px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    flex-wrap: wrap;
+  }
+  @media (max-width: 860px) {
+    .ftr__inner { grid-template-columns: 1fr 1fr; }
+    .ftr__brand { grid-column: 1 / -1; }
+  }
+  @media (max-width: 520px) {
+    .ftr__inner { grid-template-columns: 1fr; gap: 32px; }
+  }
+</style>

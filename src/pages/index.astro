@@ -1,0 +1,333 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const expertise = [
+  { t: 'Finance & Control',   d: 'Fractional CFO, business control, cashflow en rapportage.' },
+  { t: 'Tech & Product',      d: 'CTO, lead engineer, architectuur en digitale transformatie.' },
+  { t: 'Marketing & Growth',  d: 'CMO, demand generation, merk en campagnes.' },
+  { t: 'Data & Analyse',      d: 'Business- en informatieanalyse, BI en datastrategie.' },
+  { t: 'Operations',          d: 'Proces, verandering en interim-management.' },
+  { t: 'HR & People',         d: 'Recruitment, cultuur en organisatieontwikkeling.' },
+];
+
+const stappen = [
+  { n: '01', t: 'Intake', d: 'We brengen je vraag, doel en gewenste senioriteit scherp in kaart. Binnen 24 uur reactie.' },
+  { n: '02', t: 'Match',  d: 'Je krijgt één of twee bewust gekozen fractional professionals voorgesteld — geen cv-bombardement.' },
+  { n: '03', t: 'Start',  d: 'Kennismaking, heldere afspraken en snel aan de slag. Meestal binnen twee weken.' },
+];
+
+const voordelen = [
+  { t: 'Senioriteit zonder vast contract', d: 'Jarenlange ervaring op directie- of expertniveau, precies wanneer je het nodig hebt.' },
+  { t: 'Flexibel in te schalen',           d: 'Eén dag per week of drie — op- en afschalen wanneer de vraag verandert.' },
+  { t: 'Snel impact',                      d: 'Ervaren mensen die geen inwerktijd nodig hebben en meteen leveren.' },
+  { t: 'Kostenefficiënt',                  d: 'Je betaalt voor de tijd die je gebruikt — geen fulltime salaris voor een parttime vraag.' },
+];
+---
+<Layout>
+  <Header />
+
+  <!-- HERO -->
+  <section class="hero section--red">
+    <div class="container hero__inner">
+      <span class="eyebrow">Fractional talent · Nederland</span>
+      <h1 class="hero__title">
+        Senior expertise.<br />
+        <span class="hero__title-em">Voor een deel van je week.</span>
+      </h1>
+      <p class="hero__lead">
+        Go Fractional koppelt organisaties aan ervaren professionals op interim- en
+        parttime-basis. De kennis van een directielid of specialist — zonder het vaste contract.
+      </p>
+      <div class="hero__cta">
+        <a href="#contact" class="btn btn-white">Plan een gesprek</a>
+        <a href="#expertise" class="btn btn-outline-white">Bekijk expertise</a>
+      </div>
+      <div class="hero__trust">
+        <span><strong>&lt; 24u</strong> reactie op je vraag</span>
+        <span class="hero__dot"></span>
+        <span><strong>2 weken</strong> tot een match</span>
+        <span class="hero__dot"></span>
+        <span><strong>Senior</strong> professionals</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="section" id="wat">
+    <div class="container intro">
+      <span class="eyebrow">Wat is fractional?</span>
+      <h2 class="intro__title">
+        Niet elke uitdaging vraagt om een fulltime aanstelling.
+      </h2>
+      <p class="intro__body">
+        Een <em>fractional</em> professional werkt structureel voor een <em>deel</em> van de week bij je
+        organisatie. Je krijgt dezelfde ervaring en slagkracht als een vaste senior — maar
+        alleen voor de tijd die je nodig hebt. Ideaal voor groeiende bedrijven, tijdelijke
+        opgaven en organisaties die snel senior kennis in huis willen halen.
+      </p>
+    </div>
+  </section>
+
+  <!-- EXPERTISE -->
+  <section class="section section--soft" id="expertise">
+    <div class="container">
+      <div class="sec-head">
+        <span class="eyebrow">Expertise</span>
+        <h2>Senior profielen, over de hele linie.</h2>
+        <p>Van finance tot tech tot marketing — steeds met de senioriteit die je opgave vraagt.</p>
+      </div>
+      <div class="cards">
+        {expertise.map((e) => (
+          <article class="card">
+            <h3>{e.t}</h3>
+            <p>{e.d}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- AANPAK -->
+  <section class="section" id="aanpak">
+    <div class="container">
+      <div class="sec-head">
+        <span class="eyebrow">Aanpak</span>
+        <h2>In drie stappen aan de slag.</h2>
+        <p>Persoonlijk, snel en zonder cv-bombardement.</p>
+      </div>
+      <div class="steps">
+        {stappen.map((s) => (
+          <article class="step">
+            <span class="step__n">{s.n}</span>
+            <h3>{s.t}</h3>
+            <p>{s.d}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- WAAROM -->
+  <section class="section section--soft" id="waarom">
+    <div class="container waarom">
+      <div class="waarom__intro">
+        <span class="eyebrow">Waarom fractional</span>
+        <h2>Groot genoeg om impact te maken. Klein genoeg om flexibel te blijven.</h2>
+        <p>
+          Fractional werken geeft je toegang tot mensen die je fulltime nauwelijks kunt
+          binnenhalen — en die je alleen inzet wanneer het telt.
+        </p>
+        <a href="#contact" class="btn btn-dark waarom__btn">Bespreek jouw vraag</a>
+      </div>
+      <div class="waarom__grid">
+        {voordelen.map((v) => (
+          <div class="benefit">
+            <span class="benefit__check" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+            </span>
+            <div>
+              <h3>{v.t}</h3>
+              <p>{v.d}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- OPDRACHTEN -->
+  <section class="section" id="opdrachten">
+    <div class="container">
+      <div class="sec-head">
+        <span class="eyebrow">Actuele opdrachten</span>
+        <h2>Nu open.</h2>
+        <p>Ben jij een ervaren professional? Deze rollen staan open.</p>
+      </div>
+      <div class="jobs">
+        <article class="job">
+          <div class="job__top">
+            <span class="job__tag">Fractional</span>
+            <span class="job__loc">Utrecht · Overheid</span>
+          </div>
+          <h3>Business / Informatie Analist</h3>
+          <p>
+            Vertaal business naar IT bij een landelijke toezichthouder. Je adviseert over een
+            nieuwe servicemanagement-applicatie: van IST-analyse en requirements tot business
+            case en risk assessment.
+          </p>
+          <ul class="job__meta">
+            <li>HBO/WO · Informatie- of Business Analyse</li>
+            <li>5+ jaar ervaring · kennis van architectuurprincipes</li>
+            <li>3 × 6 maanden</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary job__btn">Reageer op deze rol</a>
+        </article>
+
+        <article class="job job--ghost">
+          <h3>Jouw expertise hier?</h3>
+          <p>
+            We zijn doorlopend op zoek naar senior fractional professionals in finance, tech,
+            marketing, data en operations. Stuur je profiel — dan denken we mee.
+          </p>
+          <a href="#contact" class="btn btn-ghost job__btn">Stel je voor</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / CTA -->
+  <section class="section section--red cta" id="contact">
+    <div class="container cta__inner">
+      <span class="eyebrow">Contact</span>
+      <h2 class="cta__title">Laten we kennismaken.</h2>
+      <p class="cta__lead">
+        Op zoek naar senior expertise voor een deel van je week? Of wil je zelf fractional
+        aan de slag? Eén gesprek en je weet of het past.
+      </p>
+      <div class="cta__actions">
+        <a href="mailto:info@go-fractional.nl?subject=Kennismaking%20Go%20Fractional" class="btn btn-white">Mail ons</a>
+        <a href="tel:+31000000000" class="btn btn-outline-white">Bel direct</a>
+      </div>
+      <p class="cta__mail">info@go-fractional.nl</p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* HERO */
+  .hero { padding: 120px 0 108px; overflow: hidden; position: relative; }
+  .hero__inner { max-width: 880px; }
+  .hero__title {
+    font-size: clamp(2.6rem, 6.2vw, 4.6rem);
+    color: #fff;
+    margin-bottom: 26px;
+  }
+  .hero__title-em { color: rgba(255,255,255,0.72); }
+  .hero__lead {
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
+    color: rgba(255,255,255,0.9);
+    max-width: 620px;
+    margin-bottom: 36px;
+  }
+  .hero__cta { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 44px; }
+  .hero__trust {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    font-size: 15px;
+    color: rgba(255,255,255,0.85);
+  }
+  .hero__trust strong { color: #fff; font-weight: 700; }
+  .hero__dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.45); }
+
+  /* INTRO */
+  .intro { max-width: 820px; }
+  .intro__title { font-size: clamp(1.8rem, 4vw, 2.9rem); margin-bottom: 24px; }
+  .intro__body { font-size: 1.18rem; color: var(--ink-2); }
+  .intro em { font-style: normal; color: var(--red); font-weight: 600; }
+
+  /* Section heads */
+  .sec-head { max-width: 640px; margin-bottom: 52px; }
+  .sec-head h2 { font-size: clamp(1.8rem, 4vw, 2.7rem); margin-bottom: 16px; }
+  .sec-head p { font-size: 1.1rem; color: var(--ink-2); }
+
+  /* Cards */
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 30px;
+    transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
+  }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 18px 44px rgba(20,20,20,0.08); border-color: transparent; }
+  .card h3 { font-size: 1.25rem; margin-bottom: 10px; }
+  .card p { color: var(--ink-2); font-size: 1rem; }
+
+  /* Steps */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .step {
+    border-top: 3px solid var(--red);
+    padding-top: 24px;
+  }
+  .step__n {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--red);
+    letter-spacing: 0.05em;
+  }
+  .step h3 { font-size: 1.5rem; margin: 12px 0 10px; }
+  .step p { color: var(--ink-2); }
+
+  /* Waarom */
+  .waarom { display: grid; grid-template-columns: 1fr 1.05fr; gap: 60px; align-items: start; }
+  .waarom__intro h2 { font-size: clamp(1.7rem, 3.4vw, 2.5rem); margin-bottom: 18px; }
+  .waarom__intro p { color: var(--ink-2); font-size: 1.1rem; margin-bottom: 28px; }
+  .waarom__grid { display: grid; gap: 20px; }
+  .benefit { display: flex; gap: 16px; align-items: flex-start; }
+  .benefit__check {
+    flex-shrink: 0;
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: var(--red-050);
+    color: var(--red);
+    display: grid; place-items: center;
+    margin-top: 2px;
+  }
+  .benefit h3 { font-size: 1.15rem; margin-bottom: 4px; }
+  .benefit p { color: var(--ink-2); font-size: 1rem; }
+
+  /* Jobs */
+  .jobs { display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; }
+  .job {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+  }
+  .job__top { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .job__tag {
+    font-family: var(--font-head);
+    font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    color: #fff; background: var(--red);
+    padding: 5px 12px; border-radius: var(--pill);
+  }
+  .job__loc { font-size: 14px; color: var(--ink-3); font-weight: 500; }
+  .job h3 { font-size: 1.6rem; margin-bottom: 14px; }
+  .job p { color: var(--ink-2); margin-bottom: 20px; }
+  .job__meta { list-style: none; display: grid; gap: 10px; margin-bottom: 28px; }
+  .job__meta li { position: relative; padding-left: 26px; color: var(--ink); font-size: 0.98rem; }
+  .job__meta li::before {
+    content: '';
+    position: absolute; left: 0; top: 9px;
+    width: 8px; height: 8px; border-radius: 50%; background: var(--red);
+  }
+  .job__btn { align-self: flex-start; margin-top: auto; }
+  .job--ghost { background: var(--bg-soft); border-style: dashed; }
+  .job--ghost h3 { font-size: 1.35rem; }
+
+  /* CTA */
+  .cta__inner { max-width: 720px; }
+  .cta__title { font-size: clamp(2rem, 5vw, 3.4rem); margin-bottom: 20px; }
+  .cta__lead { font-size: 1.2rem; color: rgba(255,255,255,0.9); margin-bottom: 34px; }
+  .cta__actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 24px; }
+  .cta__mail { font-family: var(--font-head); font-weight: 600; color: rgba(255,255,255,0.85); }
+
+  @media (max-width: 960px) {
+    .cards, .steps { grid-template-columns: 1fr 1fr; }
+    .waarom { grid-template-columns: 1fr; gap: 40px; }
+    .jobs { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .cards, .steps { grid-template-columns: 1fr; }
+    .hero { padding: 84px 0 76px; }
+  }
+</style>

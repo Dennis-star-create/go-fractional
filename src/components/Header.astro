@@ -1,0 +1,135 @@
+---
+import Logo from './Logo.astro';
+const links = [
+  { href: '#aanpak',    label: 'Aanpak' },
+  { href: '#expertise', label: 'Expertise' },
+  { href: '#opdrachten', label: 'Opdrachten' },
+  { href: '#waarom',    label: 'Waarom fractional' },
+];
+---
+<header class="hdr" id="top">
+  <div class="container hdr__inner">
+    <a href="/" class="hdr__brand" aria-label="Go Fractional home">
+      <Logo variant="dark" />
+    </a>
+
+    <nav class="hdr__nav" aria-label="Hoofdmenu">
+      {links.map((l) => <a href={l.href}>{l.label}</a>)}
+    </nav>
+
+    <div class="hdr__actions">
+      <a href="#contact" class="btn btn-primary hdr__cta">Plan een gesprek</a>
+      <button class="hdr__burger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="hdr__mobile" hidden>
+    {links.map((l) => <a href={l.href} class="hdr__mobile-link">{l.label}</a>)}
+    <a href="#contact" class="btn btn-primary hdr__mobile-cta">Plan een gesprek</a>
+  </div>
+</header>
+
+<style>
+  .hdr {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.82);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .hdr__inner {
+    height: 74px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .hdr__nav {
+    display: flex;
+    align-items: center;
+    gap: 34px;
+    margin-left: auto;
+  }
+  .hdr__nav a {
+    font-family: var(--font-head);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink-2);
+    transition: color .18s var(--ease);
+  }
+  .hdr__nav a:hover { color: var(--red); }
+  .hdr__actions { display: flex; align-items: center; gap: 12px; }
+  .hdr__cta { padding: 11px 20px; font-size: 14px; }
+
+  .hdr__burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px; height: 44px;
+    background: none; border: none; cursor: pointer;
+  }
+  .hdr__burger span {
+    display: block;
+    width: 22px; height: 2px;
+    background: var(--ink);
+    margin: 0 auto;
+    transition: transform .25s var(--ease), opacity .2s var(--ease);
+  }
+  .hdr__burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hdr__burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .hdr__burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .hdr__mobile {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px 24px 24px;
+    border-bottom: 1px solid var(--border);
+    background: #fff;
+  }
+  .hdr__mobile-link {
+    font-family: var(--font-head);
+    font-weight: 500;
+    font-size: 17px;
+    padding: 14px 4px;
+    border-bottom: 1px solid var(--border);
+  }
+  .hdr__mobile-cta { margin-top: 16px; }
+
+  @media (max-width: 860px) {
+    .hdr__nav, .hdr__cta { display: none; }
+    .hdr__burger { display: flex; }
+    .hdr__mobile[data-open] { display: flex; }
+  }
+</style>
+
+<script>
+  const burger = document.querySelector('.hdr__burger');
+  const mobile = document.querySelector('.hdr__mobile');
+  burger?.addEventListener('click', () => {
+    const open = burger.getAttribute('aria-expanded') === 'true';
+    burger.setAttribute('aria-expanded', String(!open));
+    if (open) {
+      mobile?.removeAttribute('data-open');
+      mobile?.setAttribute('hidden', '');
+      document.body.classList.remove('menu-open');
+    } else {
+      mobile?.setAttribute('data-open', '');
+      mobile?.removeAttribute('hidden');
+      document.body.classList.add('menu-open');
+    }
+  });
+  mobile?.querySelectorAll('a').forEach((a) =>
+    a.addEventListener('click', () => {
+      burger?.setAttribute('aria-expanded', 'false');
+      mobile?.removeAttribute('data-open');
+      mobile?.setAttribute('hidden', '');
+      document.body.classList.remove('menu-open');
+    })
+  );
+</script>

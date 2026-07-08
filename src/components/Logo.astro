@@ -1,0 +1,46 @@
+---
+// GF-monogram in de stijl van de advertentie: blokletter op een plaat.
+// variant "light" = voor donkere/rode achtergrond (wit)
+// variant "dark"  = voor lichte achtergrond (rood/inkt)
+interface Props {
+  variant?: 'light' | 'dark';
+  wordmark?: boolean;
+}
+const { variant = 'dark', wordmark = true } = Astro.props;
+
+const isLight = variant === 'light';
+const plate   = isLight ? '#ffffff' : '#d2001c';
+const gLetter = isLight ? '#d2001c' : '#ffffff';
+const fLetter = isLight ? '#ffffff' : '#d2001c';
+const word    = isLight ? '#ffffff' : '#141414';
+---
+<span class="gf-logo" aria-label="Go Fractional">
+  <svg class="gf-mark" viewBox="0 0 84 52" role="img" xmlns="http://www.w3.org/2000/svg">
+    <rect x="0" y="0" width="52" height="52" rx="9" fill={plate} />
+    <text x="26" y="41" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
+          font-size="46" font-weight="900" fill={gLetter}>G</text>
+    <text x="52" y="47" font-family="Arial, Helvetica, sans-serif"
+          font-size="62" font-weight="900" fill={fLetter}>F</text>
+  </svg>
+  {wordmark && <span class="gf-word" style={`color:${word}`}>GO FRACTIONAL</span>}
+</span>
+
+<style>
+  .gf-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .gf-mark {
+    height: 30px;
+    width: auto;
+    display: block;
+  }
+  .gf-word {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+</style>

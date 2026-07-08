@@ -1,0 +1,14 @@
+{
+  "name": "go-fractional",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.1",
+    "astro": "^6.0.5"
+  }
+}
